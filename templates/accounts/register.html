@@ -1,0 +1,67 @@
+{% extends "index.html" %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+
+<div class='rounded h-[90vh] w-full flex flex-col justify-center items-center pt-8'>
+    <div class='border rounded border-stone-500 w-[95%] md:w-[35%] h-fit px-4 py-8 md:py-14'>
+        <div class='flex justify-between text-2xl text-stone-700 font-bold'>
+            <p>Register</p>
+            <div class='text-lg font-normal'>
+                <label for="">register as</label>
+                <select class='border-0 pr-2 md:pr-8'>
+                    <option value="">User</option>
+                    <option value="">Business</option>
+                </select>
+            </div>
+        </div>
+        <div class="mt-8 mb-2 space-y-4">
+            
+            <div class="flex justify-between space-x-4">
+                <div class="flex flex-col w-1/2">
+                    <label>First name</label>
+                    <input type="text" class="w-full rounded-md" placeholder='Enter first name'/>
+                </div>
+                <div class="flex flex-col w-1/2">
+                    <label>Last name</label>
+                    <input type="text" class="w-full rounded-md" placeholder='Enter last name'/>
+                </div>
+            </div>
+            <div class="flex justify-between space-x-4">
+                <div class="flex flex-col w-1/2">
+                    <label>Email address</label>
+                    <input type="text" class="w-full rounded-md" placeholder='Enter email address'/>
+                </div>
+                <div class="flex flex-col w-1/2">
+                    <label>Phone number</label>
+                    <input type="text" class="w-full rounded-md" placeholder='Enter phone number'/>
+                </div>
+            </div>
+            <div class="flex justify-between space-x-4">
+                <div class="flex flex-col w-1/2">
+                    <label>Create password</label>
+                    <input type="text" class="w-full rounded-md" placeholder='Enter password'/>
+                </div>
+                <div class="flex flex-col w-1/2">
+                    <label>Confirm password</label>
+                    <input type="text" class="w-full rounded-md" placeholder='Confirm password'/>
+                </div>
+            </div>
+            
+        </div>
+        <div class='pt-4'>
+            <button class='w-full text-white rounded bg-[#038d63] py-2'>
+                Register
+            </button>
+        </div>
+        <div class='mt-4'>
+            <center>Have an account? <a href="{% url 'login' %}" class='text-[#038d63]'>Log in</a></center>
+        </div>
+    </div>
+    
+</div>
+
+
+
+{% endblock %}
