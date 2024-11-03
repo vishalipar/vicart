@@ -11,28 +11,52 @@
 
     <div class='md:flex md:h-[73vh] px-2 md:px-20'>
         <div class='bg-green-200 h-full w-full md:w-[25%] p-4 space-y-2 md:space-y-0'>
-            <div class='h-[30vh]'>
-                <h2 class='text-[#038d63] text-lg'>
+            <div class='h-[30vh] flex flex-col'>
+                <label class='flex justify-between text-[#038d63] text-lg' onClick="toggleDropdown()">
                     Categories
-                </h2>
-                <div class='flex flex-col space-y-2 text-stone-800'>
-                        <a href="">All products</a>
-                        <a href="">Shirts</a>
-                        <a href="">T-shirts</a>
-                        <a href="">Shoes</a>
-                        <a href="">Jeans</a>
-                        <a href="">Jackets</a>
-                </div>
+                    <p><i class="fa-solid fa-caret-down"></i></p>
+                </label>
+                <div id='dropdown' class='flex flex-col space-y-2 p-2 text-white bg-green-400 hidden shadow-lg'>
+                            {% comment %} <option selected disabled><a href="">Select</a></option>
+                            <option><a href="">All products</a></option>
+                            <a href="">Shirts</a>
+                            <a href="">T-shirts</a>
+                            <a href="">Shoes</a>
+                            <a href="">Jeans</a>
+                            <a href="">Jackets</a> {% endcomment %}
+                            
+                            <ul class="">
+                                <li><a href="{% url 'store' %}">All Products</a></li>
+                                    
+                                    {% comment %} {% for category in links %} {% endcomment %}
+                                <li><a href="">Shirts  </a></li>
+                                {% comment %} {% endfor %} {% endcomment %}
+                            </ul>
+                    </div>
+                </select>
             </div>
             <div class='h-[15vh]'>
-                <h2 class='text-[#038d63] text-lg'>
-                    Sizes
-                </h2>
-                <div class='p-4'>
+                {% comment %} <label class='flex justify-between text-[#038d63] text-lg' onClick="toggleDropdown()">
+                    Size
+                    <p><i class="fa-solid fa-caret-down"></i></p>
+                </label>
+                <div id='dropdown' class='p-4 hidden'>
                     <button class='border border-black rounded p-1'>XS</button>
                     <button class='border border-black p-1 rounded'>SM</button>
                     <button class='border border-black p-1 rounded'>LG</button>
                     <button class='border border-black p-1 rounded'>XXL</button>
+                </div> {% endcomment %}
+                
+                <div x-data="{ open: false }" class="mb-4">
+                    <button @click="open = !open" class="w-full text-left bg-green-500 text-white py-2 px-4 rounded-md">
+                        Size
+                    </button>
+                    <ul x-show="open" class="pl-4 mt-2 space-y-2 text-gray-700">
+                        <li>SM</li>
+                        <li>MD</li>
+                        <li>XL</li>
+                        <li>XXL</li>
+                    </ul>
                 </div>
             </div>
             <div class='h-[25vh]'>
@@ -129,5 +153,15 @@
 
 
 </div>
+
+
+<script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2" defer></script>
+
+    function toggleDropdown(){
+        const dropdown = document.getElementById('dropdown');
+        dropdown.classList.toggle("hidden");
+    }
+</script>
 
 {% endblock %}
