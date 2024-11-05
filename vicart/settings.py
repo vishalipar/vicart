@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+# from decouple import config
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,10 +22,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-ba678fpfsiz2(vr8mop@9b)i1mg6@@l3^jb#5&&-6&sy_*8mk6"
+# SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = 'ibo*(&26#=duo3v=c%atz*uo94$=f*eze3p57o%rz0cc3+z=ti'
+
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = config('DEBUG',default=True, cast=bool)
+DEBUG=True
+
 
 ALLOWED_HOSTS = []
 
@@ -113,6 +120,9 @@ TIME_ZONE = "UTC"
 
 USE_I18N = True
 
+USE_L10N = True
+
+
 USE_TZ = True
 
 
@@ -129,3 +139,23 @@ STATIC_ROOT = BASE_DIR /'static'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+from django.contrib.messages import constants as messages
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger',
+}
+
+
+# SMTP CONFIGURATION
+# EMAIL_HOST = config('EMAIL_HOST')
+# EMAIL_PORT = config('EMAIL_PORT', cast=int)
+# EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+# EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+# EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast=bool)
+
+EMAIL_HOST='smtp.gmail.com'
+EMAIL_PORT=587
+EMAIL_HOST_USER='vishaliparce23@sndcoe.ac.in'
+EMAIL_HOST_PASSWORD='evea fuza bxlk ulxs'
+EMAIL_USE_TLS=True
