@@ -71,15 +71,10 @@
             <small class="">Welcome {{user.first_name}}!</small>
             <div>
               <a href="{% url 'login' %}">Dashboard</a> <span class=""> | </span>
-              <a href="{% url 'register' %}"> Logout</a>
+              <a href="{% url 'logout' %}"> Logout</a>
             </div>
           </div>
-        
-        
-        
-        
-        
-        
+        {% endif %}
         
         
         <a href="{% url 'cart' %}" class="">

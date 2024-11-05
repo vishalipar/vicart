@@ -6,6 +6,7 @@ from django.shortcuts import redirect, render
 from django.template.loader import render_to_string
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
+from django.contrib.auth.decorators import login_required
 
 from cart.models import Cart
 
@@ -43,6 +44,10 @@ def register(request):
             to_email = email
             send_email = EmailMessage(mail_subject, message, to=[to_email])
             send_email.send()
+            
+            # business login
+            if user.type == 'business':
+                return redirect('/accounts/login/business_login/?command=verification&email=',+email)
             
             return redirect('/accounts/login/?command=verification&email='+email)
         else:
@@ -91,5 +96,16 @@ def login(request):
     
     return render(request, 'accounts/login.html')
     
+@login_required(login_url='login')
+def logout(request):
+    auth.logout(request)
+    messages.success(request, 'You are logged out.')
+    return redirect('login')
+    
+def business_login(request):
+    return render(request, 'accounts/business/business_login.html')
+    
+    
+# business 
 def business_login(request):
     return render(request, 'accounts/business/business_login.html')

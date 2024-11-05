@@ -21,6 +21,23 @@ class MyAccountManager(BaseUserManager):
         user.set_password(password)
         user.save(using=self.db)
         return user
+        
+    def create_superuser(self, first_name, last_name, email, username, password):
+        user = self.create_user(
+            email = self.normalize_email(email),
+            username = username,
+            password = password,
+            first_name= first_name,
+            last_name= last_name,
+            type = type,
+        )
+        
+        user.is_admin = True
+        user.is_active = True
+        user.is_staff = True
+        user.is_superadmin = True
+        user.save(using = self._db)
+        return user
     
     
 type_choices = [
@@ -51,4 +68,7 @@ class Account(AbstractBaseUser):
     
     def __str__(self):
         return self.email
-    
+    def has_module_perms(self, add_label):
+        return True
+    def has_perm(self, perm, obj=None):
+        return self.is_admin

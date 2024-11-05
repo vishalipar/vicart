@@ -2,6 +2,21 @@
 {% block title %}login{% endblock %}
 {% block content %}
 
+{% if request.GET.command == 'verification' %}
+<div
+    class="bg-green-400 py-4 text-medium md:text-lg text-stone-900 container mx-auto alert alert-info text-center"
+    role="alert"
+    style="max-width: 1024px; margin-top: 100px"
+  >
+    We have sent you verification email to your email address.
+    [{{request.GET.email}}]
+
+    <br /><br />
+    Already verified?
+    <a href="{% url 'login' %}" class="text-blue-900">Login</a>
+  </div>
+
+  {% else %}
 <div class='flex justify-center items-center h-[82vh] w-full'>
     <div class='h-[69vh] md:h-[58vh] w-[96%] md:w-[26%] border border-gray-500 rounded pt-8 px-8'>
         <div class='text-stone-700 text-2xl font-bold'>
@@ -26,7 +41,7 @@
         </div>
     </div>
 </div>
-
+{% endif %}
 
 
 
