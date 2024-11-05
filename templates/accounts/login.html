@@ -27,7 +27,7 @@
       <div class="text-stone-700 text-2xl font-bold">Sign in</div>
       {% include "include/alerts.html" %}
 
-      <form action="{% url 'login' %}">
+      <form action="{% url 'login' %}" method='post'>
         {% csrf_token %}
         <div class="mt-8 space-y-4">
           <input
@@ -39,7 +39,7 @@
           <input
             name="password"
             class="w-full rounded-lg"
-            type="email"
+            type="password"
             placeholder="Password"
           />
         </div>

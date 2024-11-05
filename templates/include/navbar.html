@@ -58,14 +58,30 @@
 
     <div class="">
       <div class="flex justify-around items-center space-x-8">
-        {% comment %} {% if user.id is None %} {% endcomment %}
-        <div class="hidden md:block">
-          <small class="">Welcome guest!</small>
-          <div>
-            <a href="{% url 'login' %}">Sign in</a> <span class=""> | </span>
-            <a href="{% url 'register' %}"> Register</a>
+        {% if user.id is None %}
+          <div class="hidden md:block">
+            <small class="">Welcome guest!</small>
+            <div>
+              <a href="{% url 'login' %}">Sign in</a> <span class=""> | </span>
+              <a href="{% url 'register' %}"> Register</a>
+            </div>
           </div>
-        </div>
+        {% else %}
+          <div class="hidden md:block">
+            <small class="">Welcome {{user.first_name}}!</small>
+            <div>
+              <a href="{% url 'login' %}">Dashboard</a> <span class=""> | </span>
+              <a href="{% url 'register' %}"> Logout</a>
+            </div>
+          </div>
+        
+        
+        
+        
+        
+        
+        
+        
         <a href="{% url 'cart' %}" class="">
           <div class="text-lg relative">
             <i class="fa fa-shopping-cart"></i>

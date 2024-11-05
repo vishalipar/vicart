@@ -1,14 +1,16 @@
-from django.shortcuts import render
-from .forms import RegistrationForm
-from django.contrib import messages
-from .models import Account
-from django.shortcuts import redirect
+from django.contrib import auth, messages
 from django.contrib.auth.tokens import default_token_generator
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.mail import EmailMessage
+from django.shortcuts import redirect, render
 from django.template.loader import render_to_string
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
+
+from cart.models import Cart
+
+from .forms import RegistrationForm
+from .models import Account
 
 # Create your views here.
 
@@ -75,7 +77,18 @@ def activate(request, uidb64, token):
     
     
     
-def login(request):
+def login(request):   
+    if request.method == 'POST': 
+        email = request.POST['email']
+        password = request.POST['password']
+        user = auth.authenticate(email=email, password=password)
+        print(password, email, user)
+        if user is not None:
+            auth.login(request, user)
+            return redirect('home')
+        else: 
+            return redirect('login')
+    
     return render(request, 'accounts/login.html')
     
 def business_login(request):
