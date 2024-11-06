@@ -21,10 +21,10 @@ class MyAccountManager(BaseUserManager):
         user.set_password(password)
         user.save(using=self.db)
         return user
-<<<<<<< HEAD
-=======
+# <<<<<<< HEAD
+# =======
         
->>>>>>> caf6102fd222ff60697431bf4ce4180c679b7ff9
+# >>>>>>> caf6102fd222ff60697431bf4ce4180c679b7ff9
     def create_superuser(self, first_name, last_name, email, username, password):
         user = self.create_user(
             email = self.normalize_email(email),
@@ -32,11 +32,11 @@ class MyAccountManager(BaseUserManager):
             password = password,
             first_name= first_name,
             last_name= last_name,
-<<<<<<< HEAD
-            type=type
-=======
-            type = type,
->>>>>>> caf6102fd222ff60697431bf4ce4180c679b7ff9
+# <<<<<<< HEAD
+            type=type,
+# =======
+            # type = type,
+# >>>>>>> caf6102fd222ff60697431bf4ce4180c679b7ff9
         )
         
         user.is_admin = True
@@ -75,16 +75,16 @@ class Account(AbstractBaseUser):
     
     def __str__(self):
         return self.email
-<<<<<<< HEAD
+# <<<<<<< HEAD
     def has_perm(self, perm, obj=None):
         return self.is_admin
     
     def has_module_perms(self, add_label):
         return True
     
-=======
+# =======
     def has_module_perms(self, add_label):
         return True
     def has_perm(self, perm, obj=None):
         return self.is_admin
->>>>>>> caf6102fd222ff60697431bf4ce4180c679b7ff9
+# >>>>>>> caf6102fd222ff60697431bf4ce4180c679b7ff9

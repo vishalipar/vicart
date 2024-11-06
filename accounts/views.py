@@ -8,12 +8,12 @@ from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 from django.contrib.auth.decorators import login_required
 
-<<<<<<< HEAD
+# <<<<<<< HEAD
 
 # from cart.models import Cart
-=======
+# =======
 from cart.models import Cart
->>>>>>> caf6102fd222ff60697431bf4ce4180c679b7ff9
+# >>>>>>> caf6102fd222ff60697431bf4ce4180c679b7ff9
 
 from .forms import RegistrationForm
 from .models import Account
@@ -101,7 +101,7 @@ def login(request):
     
     return render(request, 'accounts/login.html')
     
-<<<<<<< HEAD
+# <<<<<<< HEAD
 @login_required(login_url = 'login')
 def logout(request):
     auth.logout(request)
@@ -109,7 +109,7 @@ def logout(request):
     return redirect('login')
 
     
-=======
+# =======
 @login_required(login_url='login')
 def logout(request):
     auth.logout(request)
@@ -121,6 +121,6 @@ def business_login(request):
     
     
 # business 
->>>>>>> caf6102fd222ff60697431bf4ce4180c679b7ff9
+# >>>>>>> caf6102fd222ff60697431bf4ce4180c679b7ff9
 def business_login(request):
     return render(request, 'accounts/business/business_login.html')
