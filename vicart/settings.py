@@ -80,6 +80,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "vicart.wsgi.application"
 
+# important for login functionality based on authentication on email not on username
+AUTH_USER_MODEL = 'accounts.Account'
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
