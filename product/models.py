@@ -1,9 +1,10 @@
 from django.db import models
 import uuid
+from accounts.models import Account
 # Create your models here.
 
 class Product(models.Model):
-    vendor_id = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
+    # vendor_id = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
     product_name = models.CharField(max_length=50)
     price = models.IntegerField()
     description = models.TextField()
@@ -12,6 +13,7 @@ class Product(models.Model):
     is_available = models.BooleanField(default = True)
     created_date = models.DateTimeField(auto_now_add=True)
     modified_date = models.DateTimeField(auto_now=True)
+    vendor_id = models.ForeignKey(Account, on_delete=models.CASCADE)
     
     def __str__(self):
         return self.product_name
