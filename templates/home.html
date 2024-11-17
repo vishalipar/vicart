@@ -26,21 +26,22 @@
     <div
       class="flex md:grid justify-center flex-wrap md:grid-cols-2 lg:grid-cols-4 gap-y-6 md:gap-12 w-[90%] md:w-fit mx-auto"
     >
-    {% for p in product %}
+    {% for product in products %}
       <div class="">
         <a href="{% url 'prod_detail' %}">
           <div class="w-[80%] md:w-72 border border-stone-300 rounded-lg p-3">
             <div>
-              <img
+              {% comment %} <img
                 src="https://www.photographmyproduct.co.uk/wp-content/uploads/2020/10/Shoes-product-photography-photograph-my-product-20200117-30.jpg"
                 alt=""
-              />
+              /> {% endcomment %}
+              <img src="{{ product.images.url }}" alt="Product Image">
             </div>
             <div class="flex flex-col items-center mb-6">
               <span class="text-lg md:text-2xl font-semibold"
-                >{{p.product_name}}</span
+                >{{product.product_name}}</span
               >
-              <span class="font-medium text-base md:text-lg">₹ 2000</span>
+              <span class="font-medium text-base md:text-lg">₹ {{product.price}}</span>
               <span>Ratings</span>
             </div>
           </div>

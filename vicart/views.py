@@ -3,9 +3,9 @@ from .urls import *
 from product.models import Product
 
 def home(request):
-    product = Product.objects.all()
+    products = Product.objects.all()
     
     context = {
-        'product':product,
+        'products':products,
     }
     return render(request, 'home.html', context)
