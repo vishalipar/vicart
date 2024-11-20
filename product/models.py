@@ -1,6 +1,7 @@
 from django.db import models
 import uuid
 from accounts.models import Account
+from category.models import Category
 # Create your models here.
 
 class Product(models.Model):
@@ -14,6 +15,7 @@ class Product(models.Model):
     is_available = models.BooleanField(default = True)
     created_date = models.DateTimeField(auto_now_add=True)
     modified_date = models.DateTimeField(auto_now=True)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
     vendor_id = models.ForeignKey(Account, on_delete=models.CASCADE)
     
     def __str__(self):
