@@ -4,8 +4,9 @@ from accounts.models import Account
 # Create your models here.
 
 class Product(models.Model):
-    # vendor_id = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
     product_name = models.CharField(max_length=50)
+    slug = models.SlugField(max_length=200, unique=True,null=True)
+    
     price = models.IntegerField()
     description = models.TextField()
     images = models.ImageField(upload_to='photos/products')
@@ -14,6 +15,6 @@ class Product(models.Model):
     created_date = models.DateTimeField(auto_now_add=True)
     modified_date = models.DateTimeField(auto_now=True)
     vendor_id = models.ForeignKey(Account, on_delete=models.CASCADE)
-     
+    
     def __str__(self):
         return self.product_name
