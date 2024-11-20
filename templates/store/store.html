@@ -96,28 +96,33 @@
       </div>
     </div>
     {% comment %} right box {% endcomment %}
+    {% if not products %}
+      <h1>No products available</h1>
+    
+    {% else %}
     <div class="w-full ml-0 md:ml-8 space-y-2 md:space-y-4">
-      <h3 class="">6 Items found</h3>
+      <span>{{product_count}} Items found</span>
 
       <div
         class="md:flex gap-6 md:justify-between h-[180vh] md:h-[54vh] w-full pt-5"
       >
+      {% for product in products %}
         <div
           class="border-2 h-[56vh] md:h-[100%] w-[80%] md:w-[30%] rounded mx-8 md:mx-auto mb-4"
         >
           <div class="mx-4 w-[90%]">
             <a href="{% url 'prod_detail' %}">
               <img
-                src="https://www.photographmyproduct.co.uk/wp-content/uploads/2020/10/Shoes-product-photography-photograph-my-product-20200117-30.jpg"
+                src="{{product.images.url}}"
                 alt=""
               />
             </a>
           </div>
           <div class="mx-4">
             <h3 class="text-lg text-[#038d63]">
-              <a href="{% url 'prod_detail' %}">Product name</a>
+              <a href="{% url 'prod_detail' %}">{{product.product_name}}</a>
             </h3>
-            <p class="font-bold">₹ 2000</p>
+            <p class="font-bold">₹ {{product.price}}</p>
             <a href="{% url 'prod_detail' %}">
               <button class="bg-[#038d63] text-white w-full mt-4 py-2 rounded">
                 View Details
@@ -126,54 +131,7 @@
           </div>
           <div></div>
         </div>
-        <div
-          class="border-2 h-[56vh] md:h-[100%] w-[80%] md:w-[30%] rounded mx-8 md:mx-auto mb-4"
-        >
-          <div class="mx-4 w-[90%]">
-            <a href="{% url 'prod_detail' %}">
-              <img
-                src="https://www.photographmyproduct.co.uk/wp-content/uploads/2020/10/Shoes-product-photography-photograph-my-product-20200117-30.jpg"
-                alt=""
-              />
-            </a>
-          </div>
-          <div class="mx-4">
-            <h3 class="text-lg text-[#038d63]">
-              <a href="{% url 'prod_detail' %}">Product name</a>
-            </h3>
-            <p class="font-bold">₹ 2000</p>
-            <a href="{% url 'prod_detail' %}">
-              <button class="bg-[#038d63] text-white w-full mt-4 py-2 rounded">
-                View Details
-              </button>
-            </a>
-          </div>
-          <div></div>
-        </div>
-        <div
-          class="border-2 h-[56vh] md:h-[100%] w-[80%] md:w-[30%] rounded mx-8 md:mx-auto mb-4"
-        >
-          <div class="mx-4 w-[90%]">
-            <a href="{% url 'prod_detail' %}">
-              <img
-                src="https://www.photographmyproduct.co.uk/wp-content/uploads/2020/10/Shoes-product-photography-photograph-my-product-20200117-30.jpg"
-                alt=""
-              />
-            </a>
-          </div>
-          <div class="mx-4">
-            <h3 class="text-lg text-[#038d63]">
-              <a href="{% url 'prod_detail' %}">Product name</a>
-            </h3>
-            <p class="font-bold">₹ 2000</p>
-            <a href="{% url 'prod_detail' %}">
-              <button class="bg-[#038d63] text-white w-full mt-4 py-2 rounded">
-                View Details
-              </button>
-            </a>
-          </div>
-          <div></div>
-        </div>
+      {% endfor %}
       </div>
       {% comment %} preview pages {% endcomment %}
       <div class="flex text-md md:text-lg text-stone-800 ml-4">
@@ -183,6 +141,7 @@
         <a href="" class="border border-stone-800 px-2 rounded-r">Next</a>
       </div>
     </div>
+    {% endif %}
   </div>
 </div>
 
