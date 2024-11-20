@@ -23,10 +23,10 @@
             <p><i class="fa-solid fa-caret-down"></i></p>
           </button>
           <ul x-show="open" class="pl-4 mt-2 space-y-2 text-gray-700">
-            <li>All Products</li>
-            <li>Shirts</li>
-            <li>T-shirts</li>
-            <li>Jeans</li>
+            <li><a href="{% url 'store' %}">All Products</a></li>
+            {% for category in links %}
+              <li><a href="{{ category.get_url }}">{{category.category_name}}</a></li>
+            {% endfor %}
           </ul>
         </div>
 
@@ -97,7 +97,7 @@
     </div>
     {% comment %} right box {% endcomment %}
     {% if not products %}
-      <h1>No products available</h1>
+      <h1 class='text-lg text-gray-700 text-center w-full'>No products available</h1>
     
     {% else %}
     <div class="w-full ml-0 md:ml-8 space-y-2 md:space-y-4">
@@ -111,7 +111,7 @@
           class="border-2 h-[56vh] md:h-[100%] w-[80%] md:w-[30%] rounded mx-8 md:mx-auto mb-4"
         >
           <div class="mx-4 w-[90%]">
-            <a href="{% url 'prod_detail' %}">
+            <a href="{{ product.get_url }}">
               <img
                 src="{{product.images.url}}"
                 alt=""
@@ -120,7 +120,7 @@
           </div>
           <div class="mx-4">
             <h3 class="text-lg text-[#038d63]">
-              <a href="{% url 'prod_detail' %}">{{product.product_name}}</a>
+              <a href="{{ product.get_url }}">{{product.product_name}}</a>
             </h3>
             <p class="font-bold">₹ {{product.price}}</p>
             <a href="{% url 'prod_detail' %}">

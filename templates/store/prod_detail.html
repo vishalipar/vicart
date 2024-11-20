@@ -7,7 +7,7 @@
         <div class='md:flex h-[78vh] border border-gray-200'>
             <div class='w-full md:w-[50%] h-full'>
                 <div class='flex justify-center h-[85%]'>
-                    <img class='h-full' src="https://www.photographmyproduct.co.uk/wp-content/uploads/2020/10/Shoes-product-photography-photograph-my-product-20200117-30.jpg" alt="">
+                    <img class='h-full' src="{{single_product.images.url}}" alt="">
                 </div>
                 <div class='flex space-x-2 p-2 w-full h-fit'>
                     <img class='h-[9vh] border border-stone-800' src="https://www.photographmyproduct.co.uk/wp-content/uploads/2020/10/Shoes-product-photography-photograph-my-product-20200117-30.jpg" alt="">
@@ -21,14 +21,14 @@
                 <div class='m-4 md:m-8'>
                     <div>
                         <div class='text-xl md:text-3xl text-stone-700 font-bold'>
-                            Product-Name
+                            {{single_product.product_name}}
                         </div>
                         <div class='my-4'>
                             stars 1 review
-                            <p class='text-xl md:text-2xl text-stone-800 font-bold'>₹ 2000</p>
+                            <p class='text-xl md:text-2xl text-stone-800 font-bold'>₹ {{single_product.price}}</p>
                         </div>
                         <div>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab corporis quibusdam sunt velit. Dicta, ipsa?
+                            {{single_product.description}}
                         </div>
                     </div>
                     <form action="{% url 'cart' %}">

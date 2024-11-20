@@ -24,8 +24,9 @@
         <div
           class="dropdown hidden py-6 px-4 absolute w-full overflow-hidden flex flex-col rounded-sm shadow-sm border border-stone-200 bg-stone-50 mt-2 space-y-2 text-[#038d63]"
         >
+        <a href="{% url 'store' %}">All Products</a>
         {% for category in links %}
-          <a class="" href="{% url 'home' %}">{{category.category_name}}</a>
+          <a class="" href="{{ category.get_url }}">{{category.category_name}}</a>
         {% endfor %}
         </div>
       </div>

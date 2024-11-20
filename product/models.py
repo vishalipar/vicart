@@ -2,6 +2,7 @@ from django.db import models
 import uuid
 from accounts.models import Account
 from category.models import Category
+from django.urls import reverse
 # Create your models here.
 
 class Product(models.Model):
@@ -17,6 +18,9 @@ class Product(models.Model):
     modified_date = models.DateTimeField(auto_now=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     vendor_id = models.ForeignKey(Account, on_delete=models.CASCADE)
+    
+    def get_url(self):
+        return reverse('product_detail', args=[self.category.slug, self.slug])
     
     def __str__(self):
         return self.product_name
