@@ -96,7 +96,7 @@
                                 </div>
                             </td>
                             <td class='text-center'>
-                                <a href="" class='bg-red-600 text-white py-1 px-2 rounded'>Remove</a>
+                                <a href="{% url 'remove_cart_item' cart_item.product.id %}" class='bg-red-600 text-white py-1 px-2 rounded'>Remove</a>
                             </td>
                         </tr>
                         {% endfor %}
