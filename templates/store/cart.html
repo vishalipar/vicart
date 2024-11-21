@@ -80,7 +80,7 @@
                                 <div class='border border-blue-900'>
                                     <div class='flex items-center border border-stone-400 w-fit'>
                                         <div>
-                                            <button class='border border-gray-400 p-1'><i class='fa fa-minus'></i></button>
+                                            <a href="{% url 'remove_cart' cart_item.product.id %}" class='border border-gray-400 p-1'><i class='fa fa-minus'></i></a>
                                         </div>
                                         <input class='w-8 h-8 border-0' type="text" value='{{cart_item.quantity}}'>
                                         <div>
