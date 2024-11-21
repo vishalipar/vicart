@@ -5,8 +5,8 @@
 <div class='flex justify-center border-b border-stone-200 w-full h-fit'>
     <div class='md:flex justify-between mx-1 md:mx-8 my-8 w-full md:w-[80%] h-fit'>
         {% comment %} left box {% endcomment %}
-        <div class='border border-stone-200 w-full md:w-[74%] h-[26vh] md:h-[20vh] rounded'>
-            <div class='flex justify-between m-0 md:m-4 h-[17vh]'>
+        <div class='border border-stone-200 w-full md:w-[74%] h-[26vh] md:h-fit rounded'>
+            {% comment %} <div class='flex justify-between m-0 md:m-4 h-[17vh]'>
                 <div>
                     <p class='text-stone-400 text-sm font-bold'>PRODUCT</p>
                     <div class='md:flex h-[10vh] md:h-[12vh] ml-0 md:ml-2'>
@@ -51,6 +51,57 @@
                     </a>
                     
                 </div>
+            </div> {% endcomment %}
+            <div>
+                <table class='w-full'>
+                    <thead>
+                        <tr class='border border-red-800 text-stone-600'>
+                            <th class='border border-blue-700 w-80 text-left'>Product</th>
+                            <th class='border border-blue-700 w-60 text-left'>Quantity</th>
+                            <th class='border border-blue-700 w-120 text-left'>Price</th>
+                            <th class='w-200 text-right'></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        {% for cart_item in cart_items %}
+                        <tr>
+                            <td class='flex p-2 gap-4'>
+                                <div>
+                                    <img src="{{ cart_item.product.images.url }}" class='h-20 w-20 object-cover' alt="">
+                                </div>
+                                <figcaption>
+                                    <a class='font-bold text-stone-600' href="">{{cart_item.product.product_name}}</a>
+                                    <p class='text-[12px] text-stone-600'>Color : 25Mpx <br>Size : XL</p>
+                                </figcaption>
+                                
+                            </td>
+                            <td>
+                                <div class='border border-blue-900'>
+                                    <div class='flex items-center border border-stone-400 w-fit'>
+                                        <div>
+                                            <button class='border border-gray-400 p-1'><i class='fa fa-minus'></i></button>
+                                        </div>
+                                        <input class='w-8 h-8 border-0' type="text" value='{{cart_item.quantity}}'>
+                                        <div>
+                                            <a href="{% url 'add_cart' cart_item.product.id %}" class='border border-gray-400 p-1'><i class='fa fa-plus'></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <p class='text-stone-600 font-bold'>₹ {{cart_item.sub_total}}</var><br>
+                                    <p class='text-stone-600 text-[12px]'>₹ {{ cart_item.product.price}} each</small>
+                                </div>
+                            </td>
+                            <td class='text-center'>
+                                <a href="" class='bg-red-600 text-white py-1 px-2 rounded'>Remove</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
             </div>
         </div>
         {% comment %} right box {% endcomment %}

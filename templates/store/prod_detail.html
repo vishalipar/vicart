@@ -31,7 +31,7 @@
                             {{single_product.description}}
                         </div>
                     </div>
-                    <form action="{% url 'cart' %}">
+                    {% comment %} <form action="{% url 'cart' %}"> {% endcomment %}
                         <div class='border-t border-gray-200 mt-4 mb-2 md:mb-8 pt-4 space-y-4'>
                             <div class='space-y-2'>
                                 <label for="" class='font-bold text-stone-700 '>Choose color</label><br>
@@ -53,12 +53,16 @@
                             </div>
                         </div>
                         <div class='pt-4 border-t border-gray-200'>
-                            <button type='submit' class='bg-[#038d63] px-4 py-2 rounded text-white'>
+                            {% if single_product.stock == 0 %}
+                            <h3 class='text-red-600 text-lg'>Out of stock</h3>
+                            {% else %}
+                            <a href="{% url 'add_cart' single_product.id %}" class='bg-[#038d63] px-4 py-2 rounded text-white'>
                                 Add to cart
                                 <i class="fa-solid fa-cart-shopping pl-4"></i>
-                            </button>
+                            </a>
+                            {% endif %}
                         </div>
-                    </form>
+                    {% comment %} </form> {% endcomment %}
                 </div>
             </div>
         </div>
