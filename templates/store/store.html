@@ -104,17 +104,18 @@
       <span>{{product_count}} Items found</span>
 
       <div
-        class="md:flex gap-6 md:justify-between h-[180vh] md:h-[54vh] w-full pt-5"
+        class="md:flex gap-6 md:justify-between h-fit w-full pt-0"
       >
       {% for product in products %}
         <div
-          class="border-2 h-[56vh] md:h-[100%] w-[80%] md:w-[30%] rounded mx-8 md:mx-auto mb-4"
+          class="border-2 h-fit w-[80%] md:w-[30%] rounded p-2 mx-8 md:mx-auto mb-4"
         >
           <div class="mx-4 w-[90%]">
             <a href="{{ product.get_url }}">
               <img
                 src="{{product.images.url}}"
                 alt=""
+                class='h-60'
               />
             </a>
           </div>
