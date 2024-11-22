@@ -135,12 +135,29 @@
       {% endfor %}
       </div>
       {% comment %} preview pages {% endcomment %}
-      <div class="flex text-md md:text-lg text-stone-800 ml-4">
-        <a href="" class="border border-stone-800 px-2 rounded-l">Preview</a>
-        <a href="" class="border border-stone-800 px-2">1</a>
-        <a href="" class="border border-stone-800 px-2">2</a>
-        <a href="" class="border border-stone-800 px-2 rounded-r">Next</a>
-      </div>
+      {% if products.has_other_pages %}
+        <div class="flex text-md md:text-lg text-stone-800 ml-4">
+          {% if products.has_previous %}
+          <a href="?page={{products.previous_page_number}}" class="border border-stone-800 px-2 rounded-l">Preview</a>
+          {% else %}
+          <a href="#" class="disabled border border-stone-800 px-2 rounded-l">Preview</a>
+          {% endif %}
+          
+          {% for i in products.paginator.page_range %}
+            {% if products.number == i %}
+              <a href="#" class="border border-stone-800 px-2">{{i}}</a>
+            {% else %}
+              <a href="?page={{i}}" class="border border-stone-800 px-2">{{i}}</a>
+            {% endif %}
+          {% endfor %}
+          
+          {% if products.has_next %}
+            <a href="?page={{products.next_page_number}}" class="border border-stone-800 px-2 rounded-r">Next</a>
+          {% else %}
+            <a href="#" class="border border-stone-800 px-2 rounded-r">Next</a>
+          {% endif %}
+        </div>
+      {% endif %}
     </div>
     {% endif %}
   </div>
