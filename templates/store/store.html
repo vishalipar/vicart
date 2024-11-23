@@ -5,7 +5,30 @@
   <div
     class="text-lg md:text-3xl font-bold px-2 md:px-20 py-4 md:py-8 text-[#038d63]"
   >
-    <h2>Our Store</h2>
+  {% if 'search' in request.path %}
+    {% comment %} <h2>Search Result</h2> {% endcomment %}
+    <div class='flex justify-between'>
+      <h2>Search Result</h2>
+      <div class='block md:hidden pr-2'>
+        <form action="{% url 'search' %}" method='GET'>
+          <input type="text" class='w-20 h-8 text-sm font-normal pl-2 rounded' placeholder='Search...' name='keyword'>
+          <button type='submit'><i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+  {% else %}
+    <div class='flex justify-between'>
+      <h2>Our Store</h2>
+      <div class='block md:hidden pr-2'>
+        <form action="{% url 'search' %}" method='GET'>
+          <input type="text" class='w-20 h-8 text-sm font-normal pl-2 rounded' placeholder='Search...' name='keyword'>
+          <button type='submit'><i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+  {% endif %}
   </div>
 
   <div class="md:flex md:h-[73vh] px-2 md:px-20">
