@@ -103,19 +103,20 @@
     <div class="w-full ml-0 md:ml-8 space-y-2 md:space-y-4">
       <span>{{product_count}} Items found</span>
 
-      <div
-        class="md:flex gap-6 md:justify-between h-fit w-full pt-0"
-      >
+      {% comment %} <div
+        class="bg-red-200 md:flex gap-6 md:justify-start h-fit w-full pt-0"
+      > {% endcomment %}
+      <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
       {% for product in products %}
         <div
-          class="border-2 h-fit w-[80%] md:w-[30%] rounded p-2 mx-8 md:mx-auto mb-4"
+          class="bg-white border-2 h-fit rounded p-2 mx-8 md:mx-auto mb-4"
         >
           <div class="mx-4 w-[90%]">
             <a href="{{ product.get_url }}">
               <img
                 src="{{product.images.url}}"
                 alt=""
-                class='h-60'
+                class='h-60 w-auto mx-auto'
               />
             </a>
           </div>
