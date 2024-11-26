@@ -20,9 +20,9 @@
   </div>
 
   {% else %} {% comment %} login form {% endcomment %}
-  <div class="flex justify-center items-center h-[82vh] w-full">
+  <div class="flex justify-center items-center h-[80vh] w-full">
     <div
-      class="h-[69vh] md:h-[58vh] w-[96%] md:w-[26%] border border-gray-500 rounded pt-8 px-8"
+      class="h-[69vh] md:h-fit w-[96%] md:w-[26%] border border-gray-500 rounded pt-8 px-8"
     >
       <div class="text-stone-700 text-2xl font-bold">Sign in</div>
       {% include "include/alerts.html" %}
@@ -44,7 +44,7 @@
           />
         </div>
         <div class="flex justify-end mt-4 mb-4 text-[#038d63]">
-          <a href="">Forgot password?</a>
+          <a href="{% url 'forgotPassword' %}">Forgot password?</a>
         </div>
         <div>
           <button
@@ -61,7 +61,7 @@
           >Shop on vicart Business</a
         >
       </div>
-      <div class="">
+      <div class="mb-4">
         <center class="" for="">
           Dont have account?
           <a href="{% url 'register' %}" class="text-[#038d63]">Sign up</a>
