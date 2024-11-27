@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
+from decouple import config
 
 from pathlib import Path
 # from decouple import config
@@ -31,7 +32,7 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG=True
 
 
-ALLOWED_HOSTS = ['.vercel.app','*']
+ALLOWED_HOSTS = ['vicart.vercel.app','127.0.0.1']
 
 
 # Application definition
@@ -98,7 +99,6 @@ AUTH_USER_MODEL = 'accounts.Account'
 # }
 
 
-from decouple import config
 
 DATABASES = {
     "default": {
