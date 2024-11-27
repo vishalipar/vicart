@@ -12,7 +12,7 @@
       }
     ],
     "routes": [
-      { "src": "/(.*)", "dest": "wsgi.py" }
+      { "src": "/(.*)", "dest": "vicart/wsgi.py" }
     ]
   }
   
