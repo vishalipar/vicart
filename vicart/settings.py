@@ -22,8 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = config('SECRET_KEY')
-SECRET_KEY = 'ibo*(&26#=duo3v=c%atz*uo94$=f*eze3p57o%rz0cc3+z=ti'
+SECRET_KEY = config('SECRET_KEY')
 
 
 
@@ -98,15 +97,17 @@ AUTH_USER_MODEL = 'accounts.Account'
 #     }
 # }
 
+
+from decouple import config
+
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
-        'NAME': 'vicart',
-        'USER': 'lenovo',
-        'PASSWORD': 'lenovo',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',  # Default for PostgreSQL
-    
+        "NAME": config("DB_NAME"),
+        "USER": config("DB_USER"),
+        "PASSWORD": config("DB_PASSWORD"),
+        "HOST": config("DB_HOST", default="127.0.0.1"),
+        "PORT": config("DB_PORT", default="5432"),
     }
 }
 
@@ -171,14 +172,8 @@ MESSAGE_TAGS = {
 
 
 # SMTP CONFIGURATION
-# EMAIL_HOST = config('EMAIL_HOST')
-# EMAIL_PORT = config('EMAIL_PORT', cast=int)
-# EMAIL_HOST_USER = config('EMAIL_HOST_USER')
-# EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
-# EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast=bool)
-
-EMAIL_HOST='smtp.gmail.com'
-EMAIL_PORT=587
-EMAIL_HOST_USER='vishaliparce23@sndcoe.ac.in'
-EMAIL_HOST_PASSWORD='evea fuza bxlk ulxs'
-EMAIL_USE_TLS=True
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_PORT = config('EMAIL_PORT', cast=int)
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast=bool)
