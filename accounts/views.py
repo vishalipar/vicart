@@ -86,18 +86,17 @@ def activate(request, uidb64, token):
         return redirect('register')
             
     
-    
-    
 def login(request):   
     if request.method == 'POST': 
         email = request.POST['email']
         password = request.POST['password']
         user = auth.authenticate(email=email, password=password)
-        print(password, email, user)
+        # print(password, email, user)
         if user is not None:
             auth.login(request, user)
             return redirect('home')
         else: 
+            messages.error(request, 'Invalid login credentials.')
             return redirect('login')
     
     return render(request, 'accounts/login.html')
@@ -179,8 +178,9 @@ def resetPassword(request):
     else:     
         return render(request, 'accounts/resetPassword.html')
     
-def business_login(request):
-    return render(request, 'accounts/business/business_login.html')
+@login_required(login_url='login')
+def dashboard(request):
+    return render(request, 'accounts/dashboard.html')
     
     
 # business 

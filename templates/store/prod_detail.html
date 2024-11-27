@@ -31,24 +31,25 @@
                             {{single_product.description}}
                         </div>
                     </div>
-                    {% comment %} <form action="{% url 'cart' %}"> {% endcomment %}
+                    <form action="{% url 'add_cart' single_product.id %}" method='POST'>
+                        {% csrf_token %}
                         <div class='border-t border-gray-200 mt-4 mb-2 md:mb-8 pt-4 space-y-4'>
                             <div class='space-y-2'>
                                 <label for="" class='font-bold text-stone-700 '>Choose color</label><br>
-                                <select name="" id="" class='text-stone-700 py-1 rounded'>
+                                <select name="color" id="" class='text-stone-700 py-1 rounded'>
                                     <option value="" selected disabled>Select</option>
-                                    <option value="">Purple</option>
-                                    <option value="">Red</option>
-                                    <option value="">Blue</option>
+                                    {% for i in single_product.variation_set.colors %}
+                                    <option value="{{ i.variation_value | lower }}">{{i.variation_value | capfirst }}</option>
+                                    {% endfor %}
                                 </select>
                             </div>
                             <div class='space-y-2'>
                                 <label for="" class='font-bold text-stone-700 '>Select Size</label><br>
-                                <select name="" id="" class='text-stone-700 py-1 rounded'>
+                                <select name="size" id="" class='text-stone-700 py-1 rounded'>
                                     <option value="" selected disabled>Select</option>
-                                    <option value="">Small</option>
-                                    <option value="">Medium</option>
-                                    <option value="">Large</option>
+                                    {% for i in single_product.variation_set.sizes %}
+                                    <option value="{{ i.variation_value | lower }}">{{i.variation_value | capfirst }}</option>
+                                    {% endfor %}
                                 </select>
                             </div>
                         </div>
@@ -69,15 +70,15 @@
                                 </a>
                             </div>
                             {% else %}
-                            <a href="{% url 'add_cart' single_product.id %}" class='bg-[#038d63] px-4 py-2 rounded text-white'>
+                            <button type='submit' class='bg-[#038d63] px-4 py-2 rounded text-white'>
                                 Add to cart
                                 <i class="fa-solid fa-cart-shopping pl-4"></i>
-                            </a>
+                            </button>
                             {% endif %}
                             
                             {% endif %}
                         </div>
-                    {% comment %} </form> {% endcomment %}
+                    </form>
                 </div>
             </div>
         </div>
