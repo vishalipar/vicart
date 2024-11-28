@@ -1,0 +1,1 @@
+web: gunicorn vicart.wsgi --log-file -
