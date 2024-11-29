@@ -1,5 +1,15 @@
 {
-  "rewrites":[
-    {"source":"/(.*)", "destination": "/"}
+  "version": 2,
+  "builds": [
+    {
+      "src": "vicart/wsgi.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "vicart/wsgi.py"
+    }
   ]
 }
